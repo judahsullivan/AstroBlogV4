@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/ui/FormattedDate.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectPage from "@/containers/projects/ProjectPage.astro";
+
+---
+
+<BaseLayout nameSpace="Projects">
+  <ProjectPage />
+</BaseLayout>

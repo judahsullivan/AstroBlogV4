@@ -1,0 +1,28 @@
+---
+import SectionLayout from "@/layouts/SectionLayout.astro"
+import { getCollection } from "astro:content";
+
+
+
+
+const title = 'Insights and Innovations of my Latest Articles'
+
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+---
+<SectionLayout
+title={title}
+slotClass=""
+sectionClass=""
+mainSection={false}
+>
+
+{posts.map((article) => (
+    <h2>{article.data.title}</h2>
+))}
+
+
+    </SectionLayout>

@@ -1,0 +1,25 @@
+---
+import { routes } from "@/data";
+import PageLinks from "./PageLinks.astro";
+import { Button } from "./button";
+---
+
+
+
+<Button className='relative z-30 md:hidden menu-button gap-1 px-2 w-10 h-10 flex flex-col'>
+    <span class="w-full border border-accent " />
+    <span class="w-full border border-accent " />
+    <span class="w-full border border-accent " />
+</Button>
+<nav class="menu fixed z-20 px-6 text-white bg-secondary-foreground w-full top-0 left-0 min-h-dvh">
+    <div class="flex py-12 flex-col h-dvh w-full justify-between">
+    <PageLinks {...routes} 
+    className="flex h-full gap-6 justify-center flex-col " 
+    linkClass="text-8xl py-4"
+    />
+    <hr />
+    <div class="pt-2 justify-between items-center flex ">
+        socials
+    </div>
+    </div>
+</nav>

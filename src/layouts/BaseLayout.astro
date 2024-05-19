@@ -1,0 +1,36 @@
+---
+import BaseHead from "../components/global/BaseHead.astro";
+import Header from "../components/global/Header.astro";
+import Footer from "../components/global/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  nameSpace?: string;
+  className?: string;
+}
+
+const { nameSpace, className } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body data-barba="wrapper">
+    <div class="fixed z-30 bg-black w-full h-dvh origin-bottom overlay "></div>
+    <Header />
+    <main
+      data-barba-namespace={nameSpace}
+      data-barba="container"
+      class={cn("overflow-hidden w-full min-h-svh md:min-h-dvh",className)}
+    >
+      <slot />
+
+    </main>
+
+<Footer />
+    <script src="/src/scripts/index.ts"></script>
+  </body>
+</html>

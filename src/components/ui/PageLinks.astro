@@ -1,0 +1,18 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { cn } from "@/lib/utils";
+import type { RoutesProps } from "@/types";
+
+const { className,linkClass, ...props } = Astro.props;
+const routes: RoutesProps[] = Object.values(props);
+---
+
+<nav class={cn(className)}>
+  {
+    routes.length > 0
+      ? routes.map((prop) => (
+          <HeaderLink className={cn(linkClass)} href={prop.path} > {prop.page} </HeaderLink>
+        ))
+      : <p>No links available</p>
+  }
+</nav>
