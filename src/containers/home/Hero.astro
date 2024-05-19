@@ -3,21 +3,31 @@ import PageTitle from "@/components/ui/PageTitle.astro";
 import { Badge } from "@/components/ui/badge";
 import SectionLayout from "@/layouts/SectionLayout.astro";
 
-
-const title = "Where Creativity Meets Technology"
+const title = "Welcome, Astronaut! ";
 ---
 
-
-
-
 <SectionLayout
-mainSection={true}
-title={title}
-slotClass=""
-sectionClass="hero"
->     
-           <div class="w-full  flex justify-end pt-4">
-                <p class="desc max-w-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eos, ex nostrum necessitatibus accusamus culpa voluptatum numquam consectetur molestiae ipsam enim totam odio perspiciatis minus ducimus autem quis molestias reiciendis?</p>
-            </div>
+  mainSection={true}
+  title={title}
+  slotClass=""
+  sectionClass="hero"
+>
+  <div class="w-full flex justify-end pt-4">
+    <p class="desc max-w-lg">
+      Welcome to the official Astro blog starter Version 2 template. This
+      template serves as a lightweight, with elegant font choice and so much
+      extra goodies to get you set on making a true expereience. Whether is a
+      Blog, Personal Wesbite and etc!
+    </p>
+  </div>
+  <div
+    class="w-full img-container rounded-lg flex overflow-hidden items-center max-h-[600px] justify-center"
+  >
+    <img
+      src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlN19waG90b19vZl90aGVfc3BhY2V3YWxrX2Zsb2F0aW5nX2Fyb3VuZF90aGVfbW9vbl8zZDU1ODM4Yy1kZjUwLTQ3NGUtOWYxYi02ZjkwZWYzNzg4ZjNfMS5qcGc.jpg"
+      alt=""
+      class="hero-img object-cover w-full"
+      srcset=""
+    />
+  </div>
 </SectionLayout>
-

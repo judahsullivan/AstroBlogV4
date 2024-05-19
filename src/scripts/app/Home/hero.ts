@@ -1,49 +1,51 @@
 import gsap from "gsap";
 
 export function HeroAnimations() {
-  const hero = document.querySelectorAll(".hero");
-  const herotl = gsap.timeline({
-    defaults: {
-      delay: 0.22,
-    },
-  });
+  const heroSections = document.querySelectorAll(".hero");
 
-  hero.forEach((heroSection) => {
-    const title = heroSection?.querySelector(".title");
-    const banner = heroSection?.querySelector(".banner");
-    const bannertitle = heroSection?.querySelector(".banner-title");
+  heroSections.forEach((heroSection) => {
+    const title = heroSection.querySelector(".title");
+    const desc = heroSection.querySelector(".desc");
+    const imgContainer = heroSection.querySelector(".img-container");
+    const img = heroSection.querySelector(".hero-img");
 
-    herotl
-      .fromTo(
-        title,
-        {
-          opacity: 0,
-          y: "30%",
-          duration: 1,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-        }
-      )
-      .fromTo(
-        banner,
-        {
-          transformOrigin: "left",
-          scaleX: 0,
-        },
-        {
-          scaleX: 1,
-        },
-        0.5
-      )
-      .to(bannertitle, {
-        y: 0,
-      });
+    // Set initial state of imgContainer to cover the entire screen
+    gsap.set(imgContainer, {
+      y: "-60%",
+      borderRadius: "0px",
+      scale: 1.07,
+    });
+
+    gsap.to(imgContainer, {
+      delay: 1,
+      y: 50,
+      x: -50,
+      duration: 1.5,
+      position: "initial",
+      borderRadius: "15px",
+      scale: 0.95,
+      ease: "power3.out",
+    });
+
+    gsap.fromTo(
+      [title, desc],
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 1,
+        delay: 1.5,
+        stagger: 0.09,
+        ease: "power4.inOut",
+      }
+    );
+    gsap.from(img, {
+      scale: 1.05,
+      delay: 1.2,
+      duration: 1.2,
+    });
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  HeroAnimations();
-});
+document.addEventListener("DOMContentLoaded", HeroAnimations);

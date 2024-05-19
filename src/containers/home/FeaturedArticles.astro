@@ -1,28 +1,31 @@
 ---
-import SectionLayout from "@/layouts/SectionLayout.astro"
+import SectionLayout from "@/layouts/SectionLayout.astro";
 import { getCollection } from "astro:content";
 
+const title = "Insights and Innovations of my Latest Articles";
 
-
-
-const title = 'Insights and Innovations of my Latest Articles'
-
-
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
+// Limit the posts to a maximum of 3
+const posts = allPosts.slice(0, 3);
 ---
+
 <SectionLayout
-title={title}
-slotClass=""
-sectionClass=""
-mainSection={false}
+  title={title}
+  slotClass=""
+  sectionClass="gap-12"
+  mainSection={false}
 >
-
-{posts.map((article) => (
-    <h2>{article.data.title}</h2>
-))}
-
-
-    </SectionLayout>
+  <div class="flex flex-col gap-5">
+    {
+      posts.map((article) => (
+        <div>
+          <img class="object-cover" src={article.data.heroImage} />
+          <h2>{article.data.title}</h2>
+        </div>
+      ))
+    }
+  </div>
+</SectionLayout>

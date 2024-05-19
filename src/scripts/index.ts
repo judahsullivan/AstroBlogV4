@@ -5,8 +5,9 @@ import { HeroAnimations } from "./app/Home/hero";
 import { homeView } from "./app";
 import { LenisScroll } from "./lenis";
 
-
-
+if (history.scrollRestoration) {
+  history.scrollRestoration = "manual";
+}
 
 barba.init({
   views: [homeView],

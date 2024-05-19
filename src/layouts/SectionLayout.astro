@@ -1,30 +1,31 @@
 ---
-import PageTitle from '@/components/ui/PageTitle.astro';
-import SectionTitle from '@/components/ui/SectionTitle.astro';
-import { cn } from '@/lib/utils';
+import PageTitle from "@/components/ui/PageTitle.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import { cn } from "@/lib/utils";
 
-
-
-interface Props{
-    mainSection: boolean
-    title: string;
-    slotClass: string;
-    sectionClass: string;
+interface Props {
+  mainSection: boolean;
+  title: string;
+  slotClass: string;
+  sectionClass: string;
 }
 
-
-
-const {mainSection = false, slotClass,sectionClass, title }= Astro.props
+const { mainSection = false, slotClass, sectionClass, title } = Astro.props;
 ---
 
+<section
+  class={cn(
+    "py-24 flex-col flex justify-center min-h-screen max-w-screen-xl mx-auto w-full px-6",
+    sectionClass
+  )}
+>
+  {
+    mainSection ? (
+      <PageTitle>{title}</PageTitle>
+    ) : (
+      <SectionTitle>{title}</SectionTitle>
+    )
+  }
 
-
-<section class={cn("py-24 flex-col flex justify-center min-h-screen max-w-screen-xl mx-auto w-full px-6",sectionClass)}>
-  {mainSection ?
-<PageTitle>{title}</PageTitle>
-    : 
-    <SectionTitle>{title}</SectionTitle>
-    }
-  
-        <slot />
+  <slot class={cn(slotClass)} />
 </section>

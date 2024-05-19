@@ -1,21 +1,22 @@
 ---
 import { routes } from "@/data/index";
-import {Icon} from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 import PageLinks from "../ui/PageLinks.astro";
 import MobileNavigation from "../ui/MobileNavigation.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="fixed backdrop-blur-lg backdrop-filter z-10 top-0 h-12 w-full">
+<header
+  class="header fixed backdrop-blur-lg backdrop-filter z-10 top-0 h-12 w-full"
+>
   <div class="relative flex px-6 justify-between items-center h-full">
     <a href="/">
-      <h4>Judah Sullivan</h4>
+      <h4 class="">Astro Blog</h4>
     </a>
     <PageLinks className="hidden md:flex gap-5" {...routes} />
-    <MobileNavigation 
-    />
+    <MobileNavigation />
     <div class="hidden md:flex">
-      <Icon name="network/rss" />
-      </div>
-
+      <ThemeToggle />
+    </div>
   </div>
 </header>
