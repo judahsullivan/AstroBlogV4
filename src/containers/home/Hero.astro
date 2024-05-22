@@ -14,17 +14,22 @@ const title = "Welcome, Astronaut! ";
   slotClass=""
   sectionClass="hero"
 >
-  <div class="px-2 w-full flex flex-col md:flex-row justify-between pt-4">
+  <div class="px-2 w-full flex gap-8 flex-col md:flex-row justify-between pt-4">
     <p class="desc max-w-lg">
       Welcome to the official Astro blog starter Version 2 template. This
       template serves as a lightweight, with elegant font choice and so much
       extra goodies to get you set on making a true expereience. Whether is a
       Blog, Personal Wesbite and etc!
     </p>
-    <div class="max-w-xl w-full">
+    <div class="grid max-w-xl grid-cols-2 gap-4 w-full">
       {
         tech.map((stack) => (
-          <LinkCard href={stack.link} icon={stack.icon} title={stack.name} />
+          <LinkCard
+            subtitle=""
+            href={stack.link}
+            icon={stack.icon}
+            title={stack.name}
+          />
         ))
       }
     </div>
@@ -33,7 +38,7 @@ const title = "Welcome, Astronaut! ";
     class="w-full img-container rounded-lg flex overflow-hidden items-center max-h-[600px] justify-center"
   >
     <img
-      src="/public/blog-placeholder-about.jpg"
+      src="/blog-placeholder-about.jpg"
       alt=""
       class="hero-img object-cover w-full"
       srcset=""
