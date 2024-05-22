@@ -13,9 +13,11 @@ import ThemeToggle from "./ThemeToggle.astro";
     <a href="/">
       <h4 class="">Astro Blog</h4>
     </a>
-    <PageLinks className="hidden md:flex gap-5" {...routes} />
     <MobileNavigation />
-    <div class="hidden md:flex">
+    <div class="hidden md:flex justify-center items-center gap-5">
+      <PageLinks {...routes} />
+      {" "}|{" "}
+
       <ThemeToggle />
     </div>
   </div>

@@ -19,18 +19,17 @@ const { nameSpace, className } = Astro.props;
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body data-barba="wrapper">
-    <div class="fixed z-30 bg-black w-full h-dvh origin-bottom overlay "></div>
+    <div class="fixed z-30 bg-black w-full h-dvh origin-bottom overlay"></div>
     <Header />
     <main
       data-barba-namespace={nameSpace}
       data-barba="container"
-      class={cn("overflow-hidden w-full min-h-svh md:min-h-dvh",className)}
+      class={cn("overflow-hidden w-full min-h-screen md:min-h-dvh", className)}
     >
       <slot />
-
     </main>
 
-<Footer />
+    <Footer />
     <script src="/src/scripts/index.ts"></script>
   </body>
 </html>

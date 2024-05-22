@@ -4,11 +4,11 @@ import FormattedDate from "../../components/ui/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPage from "@/containers/blog/BlogPage.astro";
 
-const posts = (await getCollection("blog")).sort(
+const articles = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 ---
 
 <BaseLayout nameSpace="Blog">
-  <BlogPage />
+  <BlogPage articles={articles} />
 </BaseLayout>

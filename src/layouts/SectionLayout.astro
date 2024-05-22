@@ -26,6 +26,7 @@ const { mainSection = false, slotClass, sectionClass, title } = Astro.props;
       <SectionTitle>{title}</SectionTitle>
     )
   }
-
-  <slot class={cn(slotClass)} />
+  <div class={slotClass}>
+    <slot />
+  </div>
 </section>

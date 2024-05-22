@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+  icon: string;
+  title: string;
+}
+
+const { icon, title, href } = Astro.props;
+---
+
+<a
+  class="py-2 px-2 flex items-center justify-between shadow-md"
+  href={href}
+  aria-label=""
+>
+  <div>
+    <p class="">{title}</p>
+    <Icon name={icon} />
+  </div>
+  <Icon name="base/arrowUpRight" />
+</a>

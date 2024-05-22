@@ -1,0 +1,23 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props {
+  title: string;
+  src: string;
+  description: string;
+  date: Date;
+}
+
+const { title, src, description, date } = Astro.props;
+---
+
+<div class="flex flex-col">
+  <img class="rounded-md object-cover" src={src} alt={title} />
+  <div class="flex flex-col px-2 gap-5">
+    <div class="flex justify-between items-center">
+      <h2 class="text-2xl">{title}</h2>
+      <FormattedDate date={date} />
+    </div>
+    <p class="text-sm max-w-md">{description}</p>
+  </div>
+</div>
