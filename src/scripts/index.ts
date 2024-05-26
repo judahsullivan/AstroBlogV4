@@ -3,10 +3,10 @@ import { NavigationAnimation } from "./navigation";
 import { LayoutEnter, LayoutExit } from "./layout";
 import { HeroAnimations } from "./app/Home/hero";
 import { homeView } from "./app";
-import { LenisScroll } from "./lenis";
+import LocomotiveScroll from "locomotive-scroll";
 
 if (history.scrollRestoration) {
-  history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
 }
 
 barba.init({
@@ -16,7 +16,6 @@ barba.init({
       name: "default",
       once({ next }) {
         NavigationAnimation();
-        LenisScroll();
         LayoutEnter(next.container);
       },
       leave({ current }) {

@@ -1,12 +1,13 @@
 ---
-import { getCollection } from "astro:content";
-import FormattedDate from "../../components/ui/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPage from "@/containers/blog/BlogPage.astro";
 
-const articles = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+
+import { sanityClient } from "sanity:client";
+
+const articles = await sanityClient.fetch(`*[_type == "articles" && defined(slug)] | order(publishedAt desc){
+  ...
+}`);
 ---
 
 <BaseLayout nameSpace="Blog">

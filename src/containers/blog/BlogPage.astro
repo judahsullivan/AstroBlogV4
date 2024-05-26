@@ -1,32 +1,26 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import SectionLayout from "@/layouts/SectionLayout.astro";
 import ArticleCard from "@/components/ui/articleCard.astro";
+import SectionLayout from "@/layouts/SectionLayout.astro";
+import SanityImage from '@/components/ui/sanityImage.astro'
 
-interface Props {
-  articles: CollectionEntry<"blog">[];
-}
+
 
 const { articles } = Astro.props;
+console.log(articles)
 ---
 
 <SectionLayout title="Blog" slotClass="" sectionClass="" mainSection={true}>
-  <div class="grid py-12 gap-5 md:grid-cols-2">
+  <div class="grid py-12 gap-5 md:grid-cols-2 w-full">
     {
-      articles.map(async (article) => {
-        if (!article) {
-          <div>No Articles to show</div>;
-        }
-        return (
-            <ArticleCard
-            title={article.data.title}
-            date={article.data.pubDate}
-            description={article.data.description}
-            src={`${article.data.heroImage}`}
-             />
-          </div>
-        );
-      })
+      articles.map(((article: any) => (
+        <ArticleCard 
+        description={article.excerpt}
+        date={article.publishedAt}
+        title={article.title}
+        src={article.coverImage}
+        />
+      )))
+      
     }
   </div>
 </SectionLayout>

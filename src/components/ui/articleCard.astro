@@ -1,22 +1,18 @@
 ---
-import FormattedDate from "./FormattedDate.astro";
-
-interface Props {
-  title: string;
-  src: string;
-  description: string;
-  date: Date;
-}
+import SanityImage from "./sanityImage.astro";
 
 const { title, src, description, date } = Astro.props;
 ---
 
-<div class="flex flex-col">
-  <img class="rounded-md object-cover" src={src} alt={title} />
+<div class="flex flex-col gap-5">
+  <div class="h-[200px] md:h-[300px] w-full rounded-md overflow-hidden">
+  <SanityImage data-scroll data-scroll-speed={2} 
+  className="h-full md:h-[320px] w-full object-cover" node={src} alt={title} />
+  </div>
   <div class="flex flex-col px-2 gap-5">
     <div class="flex justify-between items-center">
       <h2 class="text-2xl">{title}</h2>
-      <FormattedDate date={date} />
+      <p>{date}</p> 
     </div>
     <p class="text-sm max-w-md">{description}</p>
   </div>
