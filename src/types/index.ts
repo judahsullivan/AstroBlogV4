@@ -1,11 +1,11 @@
-import { Image } from "sanity";
+import type { Image } from "sanity";
 
 export interface RoutesProps {
   path: string;
   page: string;
 }
 
-export interface HomeProps{
+export interface HomeProps {
   title: string;
   description: string;
   callToAction: string;
@@ -19,37 +19,31 @@ export interface TechnologyProps {
   link: string;
 }
 
-export interface Category{
+export interface Category {
   title: string;
   description: string;
 }
 
-export interface Tags{
+export interface Tags {
   title: string;
   description: string;
 }
 
-export interface Likes{
+export interface Likes {
   likes: number;
 }
 
-export interface Comments{
+export interface Comments {
   user: string;
   date: string;
-  comment: any
+  comment: any;
 }
 
-export interface BlogProps{
+export interface BlogProps {
   title: string;
   description: string;
   coverImage: Image;
   tags: string[];
-  category: Category 
-  body: any 
+  category: Category;
+  body: any;
 }
-
-
-
-
-
-
