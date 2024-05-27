@@ -71,7 +71,7 @@
     @apply border-border;
   }
   body {
-    @apply overflow-x-hidden bg-background text-foreground;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -92,7 +92,7 @@ html.has-scroll-dragging {
 }
 
 .has-scroll-smooth [data-scroll-container] {
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 [data-scroll-direction="horizontal"] [data-scroll-container] {

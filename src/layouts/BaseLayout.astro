@@ -18,19 +18,20 @@ const { nameSpace, className } = Astro.props;
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body data-barba="wrapper">
+  
+  <body data-barba="wrapper" class="min-h-screen w-full">
     <div class="fixed z-30 bg-black w-full h-dvh origin-bottom overlay"></div>
     <Header />
     <main
-    data-scroll-container
       data-barba-namespace={nameSpace}
+      data-scroll-container
       data-barba="container"
-      class={cn("overflow-hidden w-full min-h-screen md:min-h-dvh", className)}
+      class={cn("", className)}
     >
       <slot />
-    </main>
 
     <Footer />
-    <script src="/src/scripts/index.ts"></script>
+    </main>
   </body>
+    <script src="/src/scripts/index.ts"></script>
 </html>

@@ -1,13 +1,8 @@
-import barba, { type ITransitionData } from "@barba/core";
+import barba from "@barba/core";
 import { NavigationAnimation } from "./navigation";
 import { LayoutEnter, LayoutExit } from "./layout";
-import { HeroAnimations } from "./app/Home/hero";
 import { homeView } from "./app";
-import LocomotiveScroll from "locomotive-scroll";
-
-if (history.scrollRestoration) {
-  window.scrollTo(0, 0);
-}
+import { InitScroll } from "./Locomotive";
 
 barba.init({
   views: [homeView],
@@ -26,4 +21,8 @@ barba.init({
       },
     },
   ],
+});
+
+barba.hooks.after(() => {
+  InitScroll();
 });

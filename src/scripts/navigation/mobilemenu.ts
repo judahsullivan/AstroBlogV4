@@ -8,13 +8,10 @@ export function MobileMenu() {
     ".header-link"
   ) as NodeListOf<HTMLAnchorElement> | null; // Updated type declaration
 
-  // Boolean variable to track the menu state
   let isMenuOpen = false;
 
-  // Create a GSAP timeline for the menu animation
   const menutl = gsap.timeline({ paused: true });
 
-  // Animate the menu from hidden to visible
   menutl.to(
     menu,
     {
@@ -40,10 +37,8 @@ export function MobileMenu() {
     );
   }
 
-  // Ensure the menu is always closed initially
   gsap.set(menu, { left: "100%" });
 
-  // Toggle menu open/close on button click
   menubutton?.addEventListener("click", () => {
     isMenuOpen = !isMenuOpen;
 
@@ -54,9 +49,7 @@ export function MobileMenu() {
     }
   });
 
-  // Close the menu when a link inside the menu is clicked
   if (menuLinks) {
-    // Ensure menuLinks is not null
     menuLinks.forEach((link) => {
       link.addEventListener("click", () => {
         isMenuOpen = false;
@@ -66,5 +59,4 @@ export function MobileMenu() {
   }
 }
 
-// Initialize the MobileMenu
 MobileMenu();

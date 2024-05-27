@@ -1,19 +1,39 @@
 ---
+import { Icon } from "astro-icon/components";
+import FormattedDate from "./FormattedDate.astro";
 import SanityImage from "./sanityImage.astro";
+import { Badge } from "./badge";
 
-const { title, src, description, date } = Astro.props;
+const { title,slug, src, description, date } = Astro.props;
 ---
 
-<div class="flex flex-col gap-5">
-  <div class="h-[200px] md:h-[300px] w-full rounded-md overflow-hidden">
-  <SanityImage data-scroll data-scroll-speed={2} 
-  className="h-full md:h-[320px] w-full object-cover" node={src} alt={title} />
-  </div>
-  <div class="flex flex-col px-2 gap-5">
-    <div class="flex justify-between items-center">
-      <h2 class="text-2xl">{title}</h2>
-      <p>{date}</p> 
+<div class="flex flex-col">
+<SanityImage 
+  className=" md:h-[300px] rounded-md w-full object-cover " node={src} alt={title} 
+  />
+ 
+  <div class="w-full gap-4  flex flex-col ">
+    <div class="flex w-full flex-col md:flex-row justify-between items-center">
+      <h2 class="text-xl w-full md:max-w-md">{title}</h2>
+      <div class="w-full md:w-fit">
+
+      <FormattedDate  date={date} />
+      </div>
     </div>
-    <p class="text-sm max-w-md">{description}</p>
+    <p class="text-sm max-w-sm">{description}</p>
+    <div class="flex justify-between w-full items-center ">
+      <div class="flex gap-2 max-w-md flex-wrap">
+{
+        Array.from({length: 4}).map(((_)=> (
+          <Badge>tag</Badge>
+        )))
+      }
+        </div>
+      
+<a href={`/blog/${slug}`}>
+      <Icon name='base/arrowUpRight' />
+    </a>
+    </div>
+    
   </div>
 </div>

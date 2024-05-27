@@ -2,15 +2,15 @@
 import ArticleCard from "@/components/ui/articleCard.astro";
 import { Button } from "@/components/ui/button";
 import SectionLayout from "@/layouts/SectionLayout.astro";
-import { getCollection } from "astro:content";
+import { sanityClient } from "sanity:client";
 
 const title = "Latest Articles";
 
-const allPosts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const articles = await sanityClient.fetch(`*[_type == "articles" && defined(slug)] | order(publishedAt desc){
+  ...
+}`);
 
-const posts = allPosts.slice(0, 5);
+const posts = articles.slice(0, 4);
 ---
 
 <SectionLayout
@@ -21,12 +21,12 @@ const posts = allPosts.slice(0, 5);
 >
   <div class="grid md:grid-cols-2 gap-6">
     {
-      posts.map((article) => (
+      posts.map((article: any) => (
         <ArticleCard
-          src={`${article.data.heroImage}`}
-          title={article.data.title}
-          description={article.data.description}
-          date={article.data.pubDate}
+          src={article.coverImage}
+          title={article.title}
+          description={article.excerpt}
+          date={article.publishedAt}
         />
       ))
     }

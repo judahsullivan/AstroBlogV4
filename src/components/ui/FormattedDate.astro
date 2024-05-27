@@ -1,17 +1,23 @@
 ---
 interface Props {
-	date: Date;
+  date?: Date | string;  // Allow the date prop to be a string or a Date object
 }
 
 const { date } = Astro.props;
+
+// Helper function to ensure the date is a valid Date object
+function getValidDate(date: Date | string | undefined): Date {
+  const parsedDate = date ? new Date(date) : new Date();
+  return isNaN(parsedDate.getTime()) ? new Date() : parsedDate;
+}
+
+const validDate = getValidDate(date);
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+<time datetime={validDate.toISOString()}>
+  {validDate.toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })}
 </time>
