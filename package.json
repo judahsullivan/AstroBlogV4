@@ -29,6 +29,7 @@
     "@types/react-dom": "^18.3.0",
     "astro": "^4.8.4",
     "astro-icon": "^1.1.0",
+    "astro-portabletext": "^0.10.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "gsap": "^3.12.5",

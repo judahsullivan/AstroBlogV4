@@ -1,28 +1,34 @@
 import barba from "@barba/core";
 import { NavigationAnimation } from "./navigation";
 import { LayoutEnter, LayoutExit } from "./layout";
-import { homeView } from "./app";
+import { homeView, blogView, articleViews } from "./views";
 import { InitScroll } from "./Locomotive";
 
-barba.init({
-  views: [homeView],
-  transitions: [
-    {
-      name: "default",
-      once({ next }) {
-        NavigationAnimation();
-        LayoutEnter(next.container);
-      },
-      leave({ current }) {
-        return LayoutExit(current.container); // Ensure this returns Promise<void>
-      },
-      enter({ next }) {
-        LayoutEnter(next.container);
-      },
-    },
-  ],
-});
+const initializeBarba = async () => {
+  const articleViewList = await articleViews();
 
-barba.hooks.after(() => {
-  InitScroll();
-});
+  barba.init({
+    views: [homeView, blogView, ...articleViewList],
+    transitions: [
+      {
+        name: "default",
+        once({ next }) {
+          NavigationAnimation();
+          LayoutEnter(next.container);
+        },
+        leave({ current }) {
+          return LayoutExit(current.container); // Ensure this returns Promise<void>
+        },
+        enter({ next }) {
+          LayoutEnter(next.container);
+        },
+      },
+    ],
+  });
+
+  barba.hooks.after(() => {
+    InitScroll();
+  });
+};
+
+initializeBarba();

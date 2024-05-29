@@ -1,7 +1,6 @@
 ---
 import ArticleCard from "@/components/ui/articleCard.astro";
 import SectionLayout from "@/layouts/SectionLayout.astro";
-import SanityImage from '@/components/ui/sanityImage.astro'
 
 
 
@@ -14,6 +13,7 @@ const { articles } = Astro.props;
       articles.map(((article: any) => (
         <ArticleCard 
         description={article.excerpt}
+        slug={`/blog/${article.slug.current}`}
         date={article.publishedAt}
         title={article.title}
         src={article.coverImage}

@@ -1,0 +1,15 @@
+---
+// @ts-nocheck
+import { PortableText } from "astro-portabletext";
+import SanityImage from "./sanityImage.astro";
+
+const value = {/* provide value */};
+
+const components = {
+  type: {
+    image: SanityImage
+  }
+};
+---
+
+<PortableText value={value} components={components} />

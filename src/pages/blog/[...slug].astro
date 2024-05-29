@@ -1,20 +1,22 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import type { InferGetStaticParamsType } from "astro";
+import { getArticle,getArticles } from "@/lib/fetchArticles";
+import BlogPost from "@/layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+  const articles = await getArticles();
+  return articles.map((article) => ({
+    params: { slug: article.slug.current },
+  }));
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
-const { Content } = await post.render();
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const article = await getArticle(slug);
 ---
+<BlogPost {...article}>
 
-<BlogPost {...post.data}>
-	<Content />
 </BlogPost>
+
+
