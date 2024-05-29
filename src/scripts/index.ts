@@ -1,13 +1,11 @@
 import barba from "@barba/core";
 import { NavigationAnimation } from "./navigation";
 import { LayoutEnter, LayoutExit } from "./layout";
-import { homeView, blogView, articleViews } from "./views";
+import { homeView, blogView } from "./views";
 import { InitScroll } from "./Locomotive";
 
-const articleViewList = await articleViews();
-
 barba.init({
-  views: [homeView, blogView, ...articleViewList],
+  views: [homeView, blogView],
   transitions: [
     {
       name: "default",
