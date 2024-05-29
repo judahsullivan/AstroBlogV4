@@ -5,6 +5,11 @@ export interface RoutesProps {
   page: string;
 }
 
+export interface Socials{
+  name: string;
+  link: string;
+}
+
 export interface HomeProps {
   title: string;
   description: string;

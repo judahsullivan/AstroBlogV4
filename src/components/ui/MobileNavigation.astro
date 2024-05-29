@@ -1,6 +1,7 @@
 ---
-import { routes } from "@/data";
+import { routes, socials } from "@/data";
 import PageLinks from "./PageLinks.astro";
+import HeaderLink from "./HeaderLink.astro";
 import { Button } from "./button";
 ---
 
@@ -12,14 +13,25 @@ import { Button } from "./button";
     <span class="w-full border border-accent " />
 </Button>
 <nav class="menu fixed z-20 px-6 md:hidden  text-white bg-secondary-foreground w-full top-0 left-0 min-h-dvh">
-    <div class="flex py-12 flex-col h-dvh w-full justify-between">
+<div class="flex py-12 flex-col h-dvh w-full justify-between">
     <PageLinks {...routes} 
     className="flex h-full gap-6 justify-center flex-col " 
     linkClass="text-8xl py-4"
     />
+    
     <hr />
-    <div class="pt-2 justify-between items-center flex ">
-        socials
+    <div class=" w-full pt-2 flex-col justify-between flex ">
+        Socials
+<div class="flex w-full justify-between items-center">
+{
+			  socials.map((social) => (
+
+			<HeaderLink href={social.link}>{social.name}</HeaderLink>
+			  ))	
+			}
+				</div>
+
+
     </div>
-    </div>
-</nav>
+    </nav>
+</>

@@ -1,7 +1,40 @@
 ---
+import HeaderLink from "../ui/HeaderLink.astro";
+import {socials} from '@/data'
+
 const today = new Date();
 ---
 
-<footer  class=" w-full bg-secondary-foreground  min-h-screen">
-	Footer
+<footer  class="text-secondary w-full bg-secondary-foreground  min-h-screen">
+	<div class="flex pt-[5rem] pb-[2rem]   flex-col h-screen justify-between w-full max-w-screen-xl mx-auto px-6">
+		<div class="flex-col flex gap-5">
+<h2 class="text-6xl md:text-9xl">
+			Lets Get in Touch
+		</h2>
+		<form class="max-w-xl ">
+  <div class="relative z-0 w-full capitalize mb-5 group">
+      <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary-accent focus:outline-none focus:ring-0 focus:border-white peer" placeholder=" " required />
+      <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+  </div>
+  </form>
+		</div>
+		<div class=" flex flex-col justify-between gap-5  border-t">
+			<div class="flex justify-between w-full items-center">
+
+		<p>Copyright {new Date().getFullYear()}</p>
+		<p>your name</p>
+			</div>
+			
+			<div class="flex justify-around">
+{
+			  socials.map((social) => (
+
+			<HeaderLink href={social.link}>{social.name}</HeaderLink>
+			  ))	
+			}
+				</div>
+
+
+		</div>
+	</div>
 	</footer>
