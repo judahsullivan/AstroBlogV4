@@ -6,7 +6,7 @@ import SectionLayout from "./SectionLayout.astro";
 import { Badge } from "@/components/ui/badge";
 
 
-const { title, tags, excerpt, publishedAt, coverImage } = Astro.props;
+const { title, tags,  publishedAt, coverImage } = Astro.props;
 ---
 
 <BaseLayout
@@ -23,7 +23,7 @@ const { title, tags, excerpt, publishedAt, coverImage } = Astro.props;
     <span class="font-thin">
       Published At:
     </span>
-    <FormattedDate />
+    <FormattedDate date={publishedAt} />
   </p>
  <div class="flex flex-wrap gap-5 justify-center w-full">
       {Array.from({length: 5}).map((_)=> (
@@ -39,8 +39,8 @@ const { title, tags, excerpt, publishedAt, coverImage } = Astro.props;
       node={coverImage}
       />
     ):null}
-   
-    
+    <article class="text-left prose-xl w-full ">
+<slot />
+    </article>
   </SectionLayout>
-
 </BaseLayout>

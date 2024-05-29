@@ -2,6 +2,7 @@
 import type { InferGetStaticParamsType } from "astro";
 import { getArticle,getArticles } from "@/lib/fetchArticles";
 import BlogPost from "@/layouts/BlogPost.astro";
+import { PortableText } from "astro-portabletext";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -16,7 +17,7 @@ const { slug } = Astro.params as Params;
 const article = await getArticle(slug);
 ---
 <BlogPost {...article}>
-
+	<PortableText value={article.content} />
 </BlogPost>
 
 
