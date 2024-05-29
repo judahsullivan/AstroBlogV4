@@ -14,7 +14,7 @@ export function LayoutEnter(container: HTMLElement): void {
     .set(overlay, {
       transformOrigin: "top",
     })
-    .to(overlay, { scaleY: 0, duration: 1, ease: "power2.inOut" }, 0)
+    .to(overlay, { scaleY: 0, duration: 1, ease: "power2.inOut" }, 0);
 }
 
 export function LayoutExit(container: HTMLElement): Promise<void> {
