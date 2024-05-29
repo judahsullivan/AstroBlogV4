@@ -25,7 +25,7 @@ const posts = articles.slice(0, 4);
         <ArticleCard
           src={article.coverImage}
           title={article.title}
-          slug={article.slug}
+          slug={`/blog/${article.slug.current}`}
           description={article.excerpt}
           date={article.publishedAt}
         />
